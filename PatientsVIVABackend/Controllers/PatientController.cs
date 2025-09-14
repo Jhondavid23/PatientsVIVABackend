@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 using PatientsVIVABackend.BLL.PatientsService.Contract;
 using PatientsVIVABackend.DTO;
+using PatientsVIVABackend.Model;
 using PatientsVIVABackend.Utility;
 using System.ComponentModel.DataAnnotations;
 
@@ -13,11 +15,20 @@ namespace PatientsVIVABackend.API.Controllers
     {
         private readonly IPatientService _patientService;
         private readonly ILogger<PatientsController> _logger;
+        private readonly IValidator<CreatePatientDTO> _createValidator;
+        private readonly IValidator<UpdatePatientDTO> _updateValidator;
 
-        public PatientsController(IPatientService patientService, ILogger<PatientsController> logger)
+        public PatientsController(
+            IPatientService patientService, 
+            ILogger<PatientsController> logger,
+            IValidator<CreatePatientDTO> createValidator,
+            IValidator<UpdatePatientDTO> updateValidator
+        )
         {
             _patientService = patientService;
             _logger = logger;
+            _createValidator = createValidator;
+            _updateValidator = updateValidator;
         }
 
         /// <summary>
@@ -149,20 +160,25 @@ namespace PatientsVIVABackend.API.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
+                // Validators FluentValidation
+                var validationResult = await _createValidator.ValidateAsync(createPatientDto);
+                if (!validationResult.IsValid)
                 {
-                    var errors = ModelState
-                        .SelectMany(x => x.Value!.Errors)
-                        .Select(x => x.ErrorMessage)
-                        .ToList();
+                    var errors = validationResult.Errors.Select(e => new
+                    {
+                        Property = e.PropertyName,
+                        Error = e.ErrorMessage,
+                        AttemptedValue = e.AttemptedValue
+                    }).ToList();
 
                     return BadRequest(new ResponseAPI
                     {
                         Success = false,
-                        Message = "Validation failed",
+                        Message = "Errores de validación",
                         Data = errors
                     });
                 }
+
 
                 _logger.LogInformation("Creating new patient with DocumentType: {DocumentType} and DocumentNumber: {DocumentNumber}",
                     createPatientDto.DocumentType, createPatientDto.DocumentNumber);
@@ -241,6 +257,25 @@ namespace PatientsVIVABackend.API.Controllers
                             Data = null
                         });
                     }
+                }
+
+                // Validation with FluentValidation for Update
+                var validationResult = await _updateValidator.ValidateAsync(updatePatientDto);
+                if (!validationResult.IsValid)
+                {
+                    var errors = validationResult.Errors.Select(e => new
+                    {
+                        Property = e.PropertyName,
+                        Error = e.ErrorMessage,
+                        AttemptedValue = e.AttemptedValue
+                    }).ToList();
+
+                    return BadRequest(new ResponseAPI
+                    {
+                        Success = false,
+                        Message = "Errores de validación",
+                        Data = errors
+                    });
                 }
 
                 _logger.LogInformation("Updating patient with ID: {PatientId}", id);

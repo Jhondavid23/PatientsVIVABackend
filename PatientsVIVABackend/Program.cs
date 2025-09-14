@@ -1,5 +1,6 @@
 using PatientsVIVABackend.IOC;
 using FluentValidation;
+using PatientsVIVABackend.BLL.Validators.Patients;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -21,7 +22,8 @@ builder.Services.AddCors(options =>
 });
 
 // Validators
-
+builder.Services.AddValidatorsFromAssemblyContaining<CreatePatientValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<UpdatePatientValidator>();
 // Inyect dependencies
 builder.Services.InyectDependencies(builder.Configuration);
 

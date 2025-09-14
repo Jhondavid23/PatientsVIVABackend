@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -6,6 +7,7 @@ using PatientsVIVABackend.BLL.PatientsService.Contract;
 using PatientsVIVABackend.DAL.Repositories;
 using PatientsVIVABackend.DTO;
 using PatientsVIVABackend.Model;
+using PatientsVIVABackend.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
