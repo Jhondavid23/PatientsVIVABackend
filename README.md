@@ -2,7 +2,7 @@
 
 Una API RESTful desarrollada en .NET Core 8 para la gestión de pacientes, implementando arquitectura en capas, Entity Framework Core, procedimientos almacenados, validaciones robustas y pruebas unitarias.
 
-## 📋 Tabla de Contenidos
+## Tabla de Contenidos
 
 - [Características](#características)
 - [Arquitectura](#arquitectura)
@@ -16,7 +16,7 @@ Una API RESTful desarrollada en .NET Core 8 para la gestión de pacientes, imple
 - [Tecnologías Utilizadas](#tecnologías-utilizadas)
 - [Decisiones Técnicas](#decisiones-técnicas)
 
-## 🚀 Características
+## Características
 
 - ✅ **API RESTful completa** para gestión de pacientes (CRUD)
 - ✅ **Arquitectura en capas** bien definida (API, BLL, DAL, DTO, IOC, Utility)
@@ -31,7 +31,7 @@ Una API RESTful desarrollada en .NET Core 8 para la gestión de pacientes, imple
 - ✅ **CORS configurado** para integración con frontend
 - ✅ **Pruebas unitarias** con xUnit, Moq y Entity Framework InMemory
 
-## 🏗️ Arquitectura
+## Arquitectura
 
 El proyecto implementa una **arquitectura en capas** que garantiza separación de responsabilidades y mantenibilidad:
 
@@ -56,14 +56,14 @@ Controller → Service → Repository → Entity Framework → SQL Server
   Response API
 ```
 
-## 📋 Prerrequisitos
+## Prerrequisitos
 
 - **.NET Core 8.0 SDK** o superior
 - **SQL Server** (LocalDB, Express, Standard o Enterprise)
 - **Visual Studio 2022** o **Visual Studio Code** (recomendado)
 - **Git** para control de versiones
 
-## ⚙️ Instalación y Configuración
+## Instalación y Configuración
 
 ### 1. Clonar el Repositorio
 
@@ -138,7 +138,7 @@ SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Patients'
 SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_NAME = 'GetPatientsCreatedAfter'
 ```
 
-## 🚀 Ejecución del Proyecto
+## Ejecución del Proyecto
 
 ### Desarrollo
 
@@ -161,7 +161,7 @@ dotnet run --configuration Release
 - **API Base URL**: `https://localhost:7208/api` (HTTPS)
 - **HTTP**: `http://localhost:5208` (alternativo)
 
-## 📚 API Endpoints
+## API Endpoints
 
 ### Pacientes (Patients)
 
@@ -228,7 +228,7 @@ PUT /api/patients/1
 GET /api/patients/created-after?createdAfter=2024-01-01
 ```
 
-## 🧪 Pruebas
+## Pruebas
 
 El proyecto incluye una suite completa de pruebas unitarias e integración.
 
@@ -283,7 +283,7 @@ dotnet test --collect:"XPlat Code Coverage"
 - ✅ Procedimientos almacenados
 - ✅ Validaciones de negocio
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 PatientsVIVABackend/
@@ -338,7 +338,7 @@ PatientsVIVABackend/
 └── 📄 README.md                            # Documentación
 ```
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 ### Backend
 - **.NET Core 8.0** - Framework principal
@@ -359,7 +359,7 @@ PatientsVIVABackend/
 - **SQL Server Management Studio** - Gestión de base de datos
 - **Postman** - Pruebas de API (opcional)
 
-## 💡 Decisiones Técnicas
+## Decisiones Técnicas
 
 ### Arquitectura en Capas
 **Decisión**: Implementar arquitectura en capas bien definida.
@@ -401,7 +401,7 @@ PatientsVIVABackend/
 **Decisión**: Configurar CORS para permitir cualquier origen en desarrollo.
 **Razón**: Facilita integración con frontend durante desarrollo. En producción debe configurarse específicamente.
 
-## 🔧 Configuración Adicional
+## Configuración Adicional
 
 ### Logging
 El proyecto usa el sistema de logging de .NET Core. Los logs se muestran en consola durante desarrollo.
@@ -429,7 +429,7 @@ Para preguntas, problemas o sugerencias:
 2. **Documentación**: Revisar este README y la documentación Swagger
 3. **Logs**: Revisar los logs de la aplicación para debugging
 
-## 📝 Licencia
+## Licencia
 
 Este proyecto fue desarrollado como prueba técnica para la empresa VIVA 1A.
 
