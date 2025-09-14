@@ -410,7 +410,7 @@ El proyecto usa el sistema de logging de .NET Core. Los logs se muestran en cons
 Swagger UI está disponible automáticamente en desarrollo para probar los endpoints.
 
 
-## 🚦 Estados de Respuesta HTTP
+## Estados de Respuesta HTTP
 
 | Código | Descripción | Cuándo se Usa |
 |--------|-------------|---------------|
@@ -421,7 +421,7 @@ Swagger UI está disponible automáticamente en desarrollo para probar los endpo
 | 409 Conflict | Conflicto de datos | Duplicados (DocumentType + DocumentNumber) |
 | 500 Internal Server Error | Error del servidor | Errores no controlados |
 
-## 📞 Soporte
+## Soporte
 
 Para preguntas, problemas o sugerencias:
 
