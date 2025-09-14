@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PatientsVIVABackend.BLL\PatientsVIVABackend.BLL.csproj" />
+    <ProjectReference Include="..\PatientsVIVABackend.DAL\PatientsVIVABackend.DAL.csproj" />
+    <ProjectReference Include="..\PatientsVIVABackend.Utility\PatientsVIVABackend.Utility.csproj" />
+  </ItemGroup>
+
+</Project>

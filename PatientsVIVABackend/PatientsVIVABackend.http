@@ -1,0 +1,6 @@
+@PatientsVIVABackend_HostAddress = http://localhost:5208
+
+GET {{PatientsVIVABackend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

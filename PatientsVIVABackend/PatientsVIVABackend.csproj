@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PatientsVIVABackend.BLL\PatientsVIVABackend.BLL.csproj" />
+    <ProjectReference Include="..\PatientsVIVABackend.DTO\PatientsVIVABackend.DTO.csproj" />
+    <ProjectReference Include="..\PatientsVIVABackend.IOC\PatientsVIVABackend.IOC.csproj" />
+  </ItemGroup>
+
+</Project>
