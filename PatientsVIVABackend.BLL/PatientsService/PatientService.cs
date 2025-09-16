@@ -61,7 +61,7 @@ namespace PatientsVIVABackend.BLL.PatientsService
                 // Validate if document number filter is provided
                 if (!string.IsNullOrEmpty(documentNumber))
                 {
-                    queryAllPatients = queryAllPatients.Where(p => p.DocumentNumber.Contains(documentNumber));
+                    queryAllPatients = queryAllPatients.Where(p => p.DocumentNumber == documentNumber);
                 }
 
                 // Get total count of patients
@@ -167,13 +167,14 @@ namespace PatientsVIVABackend.BLL.PatientsService
                 var existingPatient = await _patientRepository.Get(p => p.PatientId == id) ?? throw new Exception("Patient not found.");
 
                 _logger.LogInformation("Existing patient found: {ExistingPatient}", existingPatient);
+
                 // Check for duplicate document type and number if they are being updated
                 if (!string.IsNullOrEmpty(patient.DocumentType) || !string.IsNullOrEmpty(patient.DocumentNumber))
                 {
-                    var newDocType = patient.DocumentType ?? existingPatient.DocumentType;
-                    var newDocNumber = patient.DocumentNumber ?? existingPatient.DocumentNumber;
+                    var newDocType = patient.DocumentType;
+                    var newDocNumber = patient.DocumentNumber;
 
-                    var duplicatedPatient = await _patientRepository.Get(p => p.PatientId != id && p.DocumentType == newDocType && p.DocumentNumber == newDocNumber);
+                    var duplicatedPatient = await _patientRepository.Get(p => p.PatientId != id && p.DocumentNumber == newDocNumber);
                     if (duplicatedPatient != null)
                     {
                         throw new Exception("Another patient with the same document type and number already exists.");

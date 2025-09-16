@@ -45,8 +45,7 @@ namespace PatientsVIVABackend.Utility
             CreateMap<Patient, UpdatePatientDTO>()
                 .ForMember(dest => dest.BirthDate, opt => opt.MapFrom(src => (DateTime?)src.BirthDate.ToDateTime(TimeOnly.MinValue)));
 
-            // El PagedResultDTO no necesita mapeo específico ya que es genérico
-            // Se puede usar directamente con cualquier tipo T
+           
         }
     }
 }

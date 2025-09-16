@@ -51,7 +51,7 @@ namespace PatientsVIVABackend.BLL.Validators.Patients
 
         private static bool BeValidDocumentType(string documentType)
         {
-            var validTypes = new[] { "CC", "TI", "CE", "PP", "NIT", "DNI" };
+            var validTypes = new[] { "CC", "TI", "CE", "PA", "RC", "DNI" };
             return validTypes.Contains(documentType?.ToUpper());
         }
 
